@@ -1,7 +1,15 @@
-export default function NewPost() {
+import { withPageAuthRequired } from "@auth0/nextjs-auth0";
+
+export default function NewPost(props) {
   return (
     <div>
       <h1>The new post page</h1>
     </div>
   );
 }
+
+export const getServerSideProps = withPageAuthRequired(() => {
+  return {
+    props: {},
+  };
+});
