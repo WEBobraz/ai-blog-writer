@@ -16,8 +16,8 @@ export default function Home() {
               <Image
                 src={user.picture}
                 alt={user.name}
-                height={50}
-                width={50}
+                height={60}
+                width={60}
               />
               <div>{user.email}</div>
             </div>
