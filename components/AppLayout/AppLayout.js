@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Logo } from "./Logo";
 
-const AppLayout = ({ children }) => {
+export const AppLayout = ({ children }) => {
   const { user } = useUser();
   return (
     <div className="grid grid-cols-[300px_1fr] h-screen max-h-screen">
@@ -47,7 +47,7 @@ const AppLayout = ({ children }) => {
           )}
         </div>
       </div>
-      <div>{children}</div>
+      {children}
     </div>
   );
 };

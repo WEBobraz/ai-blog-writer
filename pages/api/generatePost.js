@@ -74,8 +74,13 @@ export default withApiAuthRequired(async function handler(req, res) {
     ],
   });
 
-  const { title, metaDescription } =
-    seoResponse.data.choices[0]?.message?.content || {};
+  // const { title, metaDescription } =
+  //   seoResponse.data.choices[0]?.message?.content || {};
+
+  const jsonSeoResponse = JSON.parse(
+    seoResponse.data.choices[0]?.message?.content
+  );
+  const { title, metaDescription } = jsonSeoResponse || {};
 
   await db.collection("users").updateOne(
     {
@@ -98,12 +103,10 @@ export default withApiAuthRequired(async function handler(req, res) {
     created: new Date(),
   });
 
+  console.log("POST: ", post);
+
   // Send the response back to the client
   res.status(200).json({
-    post: {
-      postContent,
-      title,
-      metaDescription,
-    },
+    postId: post.insertedId,
   });
 });
