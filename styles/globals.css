@@ -27,6 +27,24 @@
   h5 {
     @apply text-lg;
   }
+
+  p {
+    @apply my-2;
+  }
+
+  ul,
+  ol {
+    @apply my-4;
+  }
+  ul {
+    list-style-type: disc;
+  }
+  oi {
+    list-style-type: decimal;
+  }
+  li {
+    @apply my-2;
+  }
 }
 
 @layer components {
