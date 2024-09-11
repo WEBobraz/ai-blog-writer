@@ -3,6 +3,7 @@ import AppLayout from "../../components/AppLayout/AppLayout";
 import { useState } from "react";
 import Markdown from "react-markdown";
 import { useRouter } from "next/router";
+import { getAppProps } from "../../utils/getAppProps";
 
 export default function NewPost(props) {
   const router = useRouter();

@@ -25,7 +25,7 @@ export default withApiAuthRequired(async function handler(req, res) {
   const { topic, keywords } = req.body;
 
   const response = await openai.createChatCompletion({
-    model: "gpt-3.5-turbo-1106",
+    model: "gpt-4o-mini",
     messages: [
       {
         role: "system",
@@ -51,7 +51,7 @@ export default withApiAuthRequired(async function handler(req, res) {
   const postContent = response.data.choices[0]?.message?.content;
 
   const seoResponse = await openai.createChatCompletion({
-    model: "gpt-3.5-turbo-1106",
+    model: "gpt-4o-mini",
     messages: [
       {
         role: "system",
