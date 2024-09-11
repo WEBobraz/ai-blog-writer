@@ -1,17 +1,17 @@
 import "../styles/globals.css";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
-import { DM_Sans, DM_Serif_Display } from "@next/font/google";
+import { Noto_Sans, Noto_Serif_Display } from "@next/font/google";
 
-const dmSans = DM_Sans({
+const notoSans = Noto_Sans({
   weight: ["400", "500", "700"],
-  subsets: ["latin"],
-  variable: "--font-dm-sans",
+  subsets: ["cyrillic-ext"],
+  variable: "--font-noto-sans",
 });
 
-const dmSerifDisplay = DM_Serif_Display({
+const notoSerifDisplay = Noto_Serif_Display({
   weight: ["400"],
-  subsets: ["latin"],
-  variable: "--font-dm-serif",
+  subsets: ["cyrillic-ext"],
+  variable: "--font-noto-serif",
 });
 
 function MyApp({ Component, pageProps }) {
@@ -19,7 +19,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <UserProvider>
       <main
-        className={`${dmSans.variable} ${dmSerifDisplay.variable} font-body`}
+        className={`${notoSans.variable} ${notoSerifDisplay.variable} font-body`}
       >
         {getLayout(<Component {...pageProps} />, pageProps)}
       </main>
