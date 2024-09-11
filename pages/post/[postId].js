@@ -5,6 +5,7 @@ import clientPromise from "../../lib/mongodb";
 import Markdown from "react-markdown";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHashtag } from "@fortawesome/free-solid-svg-icons";
+import { getAppProps } from "../../utils/getAppProps";
 
 export default function Post(props) {
   console.log("PROPS:", props);
@@ -45,6 +46,7 @@ Post.getLayout = function getLayout(page, pageProps) {
 
 export const getServerSideProps = withPageAuthRequired({
   async getServerSideProps(ctx) {
+    const props = await getAppProps(ctx);
     const userSession = await getSession(ctx.req, ctx.res);
     const client = await clientPromise;
     const db = client.db("ai_blog");
@@ -71,6 +73,7 @@ export const getServerSideProps = withPageAuthRequired({
         title: post.title,
         metaDescription: post.metaDescription,
         keywords: post.keywords,
+        ...props,
       },
     };
   },
