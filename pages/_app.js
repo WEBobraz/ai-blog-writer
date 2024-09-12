@@ -1,6 +1,9 @@
 import "../styles/globals.css";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
 import { Noto_Sans, Noto_Serif_Display } from "@next/font/google";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+import { config } from "@fortawesome/fontawesome-svg-core";
+config.autoAddCss = false;
 
 const notoSans = Noto_Sans({
   weight: ["400", "500", "700"],
