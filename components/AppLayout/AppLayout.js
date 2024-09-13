@@ -12,10 +12,11 @@ export const AppLayout = ({
   availableTokens,
   posts: postsFromSSR,
   postId,
+  postCreated,
 }) => {
   const { user } = useUser();
 
-  const { setPostsFromSSR, posts } = useContext(postsContext);
+  const { setPostsFromSSR, posts, getPosts } = useContext(postsContext);
 
   useEffect(() => {
     setPostsFromSSR(postsFromSSR);
@@ -46,7 +47,12 @@ export const AppLayout = ({
               {post.topic}
             </Link>
           ))}
-          <div className="hover: underline text-sm text-slate-400 text-center cursor-pointer mt-4">
+          <div
+            onClick={() => {
+              getPosts({ lastPostDate: posts[posts.length - 1].created });
+            }}
+            className="hover: underline text-sm text-slate-400 text-center cursor-pointer mt-4"
+          >
             Load more posts
           </div>
         </div>
