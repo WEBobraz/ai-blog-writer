@@ -20,7 +20,13 @@ export const AppLayout = ({
 
   useEffect(() => {
     setPostsFromSSR(postsFromSSR);
-  }, [postsFromSSR, setPostsFromSSR]);
+    if (postId) {
+      const exists = postsFromSSR.find((post) => post._id === postId);
+      if (!exists) {
+        getPosts({ getNewerPosts: true, lastPostDate: postCreated });
+      }
+    }
+  }, [postsFromSSR, setPostsFromSSR, postId, postCreated, getPosts]);
 
   return (
     <div className="grid grid-cols-[300px_1fr] h-screen max-h-screen">
@@ -47,6 +53,7 @@ export const AppLayout = ({
               {post.topic}
             </Link>
           ))}
+
           <div
             onClick={() => {
               getPosts({ lastPostDate: posts[posts.length - 1].created });
