@@ -42,7 +42,7 @@ export default withApiAuthRequired(async function handler(req, res) {
       {
         role: "user",
         content: `Write a long and detailed SEO-friendly blog post about ${topic}, that targets the following comma-separated keywords: ${keywords}. 
-      The response should be formatted in SEO-friendly HTML, 
+      The response should be formatted in SEO-friendly HTML, include only the text content in your response, do not include the html title tag in your response, 
       limited to the following HTML tags: p, h1, h2, h3, h4, h5, h6, strong, i, ul, li, ol.`,
       },
     ],
@@ -61,7 +61,7 @@ export default withApiAuthRequired(async function handler(req, res) {
       {
         role: "user",
         content: `Write a long and detailed SEO-friendly blog post about ${topic}, that targets the following comma-separated keywords: ${keywords}. 
-      The response should be formatted in SEO-friendly HTML, 
+      The response should be formatted in SEO-friendly HTML, include only the text content in your response, do not include the html title tag in your response, 
       limited to the following HTML tags: p, h1, h2, h3, h4, h5, h6, strong, i, ul, li, ol.`,
       },
       {
@@ -86,7 +86,7 @@ export default withApiAuthRequired(async function handler(req, res) {
       {
         role: "user",
         content: `Write a long and detailed SEO-friendly blog post about ${topic}, that targets the following comma-separated keywords: ${keywords}. 
-      The response should be formatted in SEO-friendly HTML, 
+      The response should be formatted in SEO-friendly HTML, include only the text content in your response, do not include the html title tag in your response,
       limited to the following HTML tags: p, h1, h2, h3, h4, h5, h6, strong, i, ul, li, ol.`,
       },
       {
@@ -109,6 +109,17 @@ export default withApiAuthRequired(async function handler(req, res) {
   console.log("POST CONTENT: ", postContent);
   console.log("TITLE: ", title);
   console.log("META DESCRIPTION: ", metaDescription);
+
+  await db.collection("users").updateOne(
+    {
+      auth0Id: user.sub,
+    },
+    {
+      $inc: {
+        availableTokens: -1,
+      },
+    }
+  );
 
   const post = await db.collection("posts").insertOne({
     postContent: postContent || "",
