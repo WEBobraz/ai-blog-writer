@@ -33,7 +33,7 @@ export default withApiAuthRequired(async function handler(req, res) {
   }
 
   const postContentResult = await openai.createChatCompletion({
-    model: "gpt-3.5-turbo",
+    model: "gpt-4o-mini",
     messages: [
       {
         role: "system",
@@ -42,7 +42,7 @@ export default withApiAuthRequired(async function handler(req, res) {
       {
         role: "user",
         content: `Write a long and detailed SEO-friendly blog post about ${topic}, that targets the following comma-separated keywords: ${keywords}. 
-      The response should be formatted in SEO-friendly HTML, include only the text content in your response, do not include the html title tag in your response, 
+      The response should contain at least 1500 words, be formatted in SEO-friendly HTML, include only the text content in your response, do not include the html title tag in your response, 
       limited to the following HTML tags: p, h1, h2, h3, h4, h5, h6, strong, i, ul, li, ol.`,
       },
     ],
@@ -52,7 +52,7 @@ export default withApiAuthRequired(async function handler(req, res) {
   const postContent = postContentResult.data.choices[0]?.message.content;
 
   const titleResult = await openai.createChatCompletion({
-    model: "gpt-3.5-turbo",
+    model: "gpt-4o-mini",
     messages: [
       {
         role: "system",
@@ -61,7 +61,7 @@ export default withApiAuthRequired(async function handler(req, res) {
       {
         role: "user",
         content: `Write a long and detailed SEO-friendly blog post about ${topic}, that targets the following comma-separated keywords: ${keywords}. 
-      The response should be formatted in SEO-friendly HTML, include only the text content in your response, do not include the html title tag in your response, 
+      The response should contain at least 1500 words, be formatted in SEO-friendly HTML, include only the text content in your response, do not include the html title tag in your response, 
       limited to the following HTML tags: p, h1, h2, h3, h4, h5, h6, strong, i, ul, li, ol.`,
       },
       {
@@ -77,7 +77,7 @@ export default withApiAuthRequired(async function handler(req, res) {
   });
 
   const metaDescriptionResult = await openai.createChatCompletion({
-    model: "gpt-3.5-turbo",
+    model: "gpt-4o-mini",
     messages: [
       {
         role: "system",
@@ -86,7 +86,7 @@ export default withApiAuthRequired(async function handler(req, res) {
       {
         role: "user",
         content: `Write a long and detailed SEO-friendly blog post about ${topic}, that targets the following comma-separated keywords: ${keywords}. 
-      The response should be formatted in SEO-friendly HTML, include only the text content in your response, do not include the html title tag in your response,
+      The response should contain at least 1500 words, be formatted in SEO-friendly HTML, include only the text content in your response, do not include the html title tag in your response,
       limited to the following HTML tags: p, h1, h2, h3, h4, h5, h6, strong, i, ul, li, ol.`,
       },
       {
