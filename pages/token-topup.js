@@ -1,9 +1,6 @@
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
-import AppLayout from "../components/AppLayout/AppLayout";
+import { AppLayout } from "../components/AppLayout";
 import { getAppProps } from "../utils/getAppProps";
-import stripeInit from "stripe";
-
-const stripe = stripeInit(process.env.STRIPE_SECRET_KEY);
 
 export default function TokenTopup() {
   const handleClick = async () => {
@@ -17,7 +14,7 @@ export default function TokenTopup() {
 
   return (
     <div>
-      <h1>The token topup page</h1>
+      <h1>this is the token topup</h1>
       <button className="btn" onClick={handleClick}>
         Add tokens
       </button>
