@@ -46,7 +46,7 @@ export default withApiAuthRequired(async function handler(req, res) {
       limited to the following HTML tags: p, h1, h2, h3, h4, h5, h6, strong, i, ul, li, ol.`,
       },
     ],
-    temperature: 0,
+    temperature: 1,
   });
 
   const postContent = postContentResult.data.choices[0]?.message.content;
@@ -73,7 +73,7 @@ export default withApiAuthRequired(async function handler(req, res) {
         content: "Generate appropriate title tag text for the above blog post",
       },
     ],
-    temperature: 0,
+    temperature: 1,
   });
 
   const metaDescriptionResult = await openai.createChatCompletion({
@@ -99,7 +99,7 @@ export default withApiAuthRequired(async function handler(req, res) {
           "Generate SEO-friendly meta description content for the above blog post",
       },
     ],
-    temperature: 0,
+    temperature: 1,
   });
 
   const title = titleResult.data.choices[0]?.message.content;

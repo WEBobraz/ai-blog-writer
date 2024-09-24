@@ -39,6 +39,7 @@ export default function NewPost(props) {
         <div className="text-green-500 flex h-full animate-pulse w-full flex-col justify-center items-center">
           <FontAwesomeIcon icon={faBrain} className="text-8xl" />
           <h6>Generating...</h6>
+          <h6>sometimes it can take a few minutes</h6>
         </div>
       )}
       {!generating && (
