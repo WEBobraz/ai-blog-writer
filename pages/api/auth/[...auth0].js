@@ -17,7 +17,7 @@ const authOptions = {
         .collection("users")
         .updateOne(
           { auth0Id: user.sub },
-          { $setOnInsert: { auth0Id: user.sub, availableTokens: 10 } },
+          { $setOnInsert: { auth0Id: user.sub, availableTokens: 5 } },
           { upsert: true }
         );
     } catch (error) {
